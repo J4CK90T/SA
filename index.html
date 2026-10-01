@@ -1,0 +1,2110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Teacher Exams</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #eceee9;
+  --card: #fbfbf8;
+  --text: #17202a;
+  --sub: #4f5b66;
+  --sub2: #7d8791;
+  --border: #cfd3cc;
+  --ink: #17202a;
+  --accent: #2437c9;
+  --accent2: #1a2899;
+  --accentSoft: #e3e6fa;
+  --orange: #f5d90a;
+  --orangeSoft: #fbf1a8;
+  --ok: #17693f;
+  --okSoft: #dcefe3;
+  --warn: #8a5a00;
+  --warnSoft: #f7e8c4;
+  --danger: #b8281f;
+  --dangerSoft: #f6dcd9;
+  --radius: 10px;
+  --shadow: none;
+  --head: 'Bricolage Grotesque', 'Instrument Sans', system-ui, sans-serif;
+  --body: 'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+:root[data-theme="dark"] {
+  --bg: #12171c;
+  --card: #1a2128;
+  --text: #e8ebe4;
+  --sub: #a3adb5;
+  --sub2: #74808a;
+  --border: #33404a;
+  --ink: #e8ebe4;
+  --accent: #8f9dff;
+  --accent2: #b3bcff;
+  --accentSoft: #232a52;
+  --orange: #f5d90a;
+  --orangeSoft: #4a4310;
+  --ok: #6fd49b;
+  --okSoft: #17352a;
+  --warn: #f0c15a;
+  --warnSoft: #3a2d0e;
+  --danger: #ff8f86;
+  --dangerSoft: #40201e;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-padding-top: env(safe-area-inset-top, 0px);
+}
+
+body {
+  margin: 0;
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.5;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100%;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  transition: background 0.2s, color 0.2s;
+}
+
+h1, h2, h3 {
+  font-family: var(--head);
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: var(--bg);
+  border-bottom: 2px solid var(--ink);
+  padding: calc(12px + env(safe-area-inset-top, 0px)) 20px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.navbrand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--head);
+  font-weight: 800;
+  font-size: 19px;
+  letter-spacing: -0.01em;
+}
+
+.navbrand .ic {
+  width: 34px;
+  height: 34px;
+  border-radius: 6px;
+  background: var(--orange);
+  color: #17202a;
+  border: 2px solid var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  transform: rotate(-4deg);
+  flex-shrink: 0;
+}
+
+.navright {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.navavatar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.navavatar .nm {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.themebtn {
+  background: transparent;
+  color: var(--text);
+  border: 1.5px solid var(--ink);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 15px;
+  margin: 0;
+  padding: 0;
+  box-shadow: none;
+  transition: background 0.15s;
+}
+
+.themebtn:hover {
+  background: var(--orangeSoft);
+  transform: none;
+}
+
+.wrap {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 28px 18px 56px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.topbar h1 {
+  font-size: 28px;
+}
+
+.card {
+  background: var(--card);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius);
+  padding: 22px;
+  margin-bottom: 16px;
+}
+
+.card.stg {
+  animation: none;
+}
+
+.hero {
+  text-align: left;
+  padding: 40px 28px 34px;
+  position: relative;
+}
+
+.hero .badge {
+  display: inline-block;
+  background: var(--orange);
+  color: #17202a;
+  padding: 3px 10px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 18px;
+  transform: rotate(-1.5deg);
+}
+
+.hero h1 {
+  font-size: clamp(38px, 9vw, 60px);
+  line-height: 1;
+  margin-bottom: 14px;
+}
+
+.hero p {
+  color: var(--sub);
+  margin: 0 0 26px;
+  font-size: 17px;
+  max-width: 46ch;
+}
+
+.chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 22px;
+}
+
+.chip {
+  background: transparent;
+  color: var(--text);
+  padding: 5px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  border: 1.5px dashed var(--sub2);
+}
+
+.banner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  background: var(--orangeSoft);
+  border-color: var(--ink);
+  flex-wrap: wrap;
+}
+
+.banner .bic {
+  font-size: 24px;
+}
+
+.banner .btext {
+  flex: 1;
+  min-width: 120px;
+}
+
+.banner .btext b {
+  display: block;
+  font-size: 13px;
+  color: var(--sub);
+  font-weight: 600;
+}
+
+.banner .btext div {
+  font-weight: 700;
+  font-size: 17px;
+  font-family: var(--head);
+  color: var(--text);
+}
+
+:root[data-theme="dark"] .banner .btext div {
+  color: #fff6b8;
+}
+
+label {
+  display: block;
+  font-size: 14px;
+  color: var(--text);
+  margin: 16px 0 6px;
+  font-weight: 600;
+}
+
+input[type=text],
+input[type=password],
+input[type=number],
+textarea,
+select {
+  width: 100%;
+  padding: 11px 13px;
+  border-radius: 6px;
+  border: 1.5px solid var(--sub2);
+  background: var(--card);
+  color: var(--text);
+  font-size: 16px;
+  font-family: inherit;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: none;
+  border-color: var(--ink);
+  box-shadow: 0 0 0 3px var(--orange);
+}
+
+textarea {
+  min-height: 96px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+button {
+  cursor: pointer;
+  border: 1.5px solid var(--ink);
+  border-radius: 8px;
+  padding: 11px 20px;
+  min-height: 44px;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: var(--body);
+  background: var(--ink);
+  color: var(--bg);
+  margin-top: 12px;
+  margin-right: 8px;
+  box-shadow: 0 3px 0 var(--sub2);
+  transition: transform 0.08s, box-shadow 0.08s, background 0.15s, color 0.15s;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 0 var(--sub2);
+}
+
+button:active {
+  transform: translateY(3px);
+  box-shadow: 0 0 0 var(--sub2);
+}
+
+button:focus-visible,
+a.link:focus-visible,
+.opt:focus-within {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+button.secondary {
+  background: var(--card);
+  color: var(--text);
+  box-shadow: 0 3px 0 var(--border);
+}
+
+button.orange {
+  background: var(--orange);
+  color: #17202a;
+  box-shadow: 0 3px 0 var(--ink);
+}
+
+button.orange:hover {
+  box-shadow: 0 4px 0 var(--ink);
+}
+
+button.orange:active {
+  box-shadow: 0 0 0 var(--ink);
+}
+
+button.danger {
+  background: var(--card);
+  color: var(--danger);
+  border-color: var(--danger);
+  box-shadow: none;
+}
+
+button.danger:hover {
+  background: var(--danger);
+  color: #fff;
+  transform: none;
+  box-shadow: none;
+}
+
+button.ghost {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--sub2);
+  box-shadow: none;
+}
+
+button.ghost:hover {
+  background: var(--card);
+  border-color: var(--ink);
+  transform: none;
+  box-shadow: none;
+}
+
+button.big {
+  width: 100%;
+  padding: 15px;
+  font-size: 17px;
+  margin-right: 0;
+}
+
+button.toggle {
+  background: var(--card);
+  color: var(--sub);
+  border-color: var(--sub2);
+  box-shadow: none;
+}
+
+button.toggle.on-ok {
+  background: var(--okSoft);
+  color: var(--ok);
+  border-color: var(--ok);
+  box-shadow: inset 0 0 0 1px var(--ok);
+}
+
+button.toggle.on-bad {
+  background: var(--dangerSoft);
+  color: var(--danger);
+  border-color: var(--danger);
+  box-shadow: inset 0 0 0 1px var(--danger);
+}
+
+.tabs {
+  display: flex;
+  gap: 0;
+  border: 1.5px solid var(--ink);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.tabs button {
+  flex: 1;
+  margin: 0;
+  background: transparent;
+  color: var(--text);
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.tabs button + button {
+  border-left: 1.5px solid var(--ink);
+}
+
+.tabs button:hover {
+  background: var(--orangeSoft);
+  transform: none;
+  box-shadow: none;
+}
+
+.tabs button.active {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 9px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 700;
+  border: 1.5px solid currentColor;
+}
+
+.pill.ok {
+  background: var(--okSoft);
+  color: var(--ok);
+}
+
+.pill.warn {
+  background: var(--warnSoft);
+  color: var(--warn);
+}
+
+.pill.sub {
+  background: var(--accentSoft);
+  color: var(--accent);
+}
+
+.small {
+  color: var(--sub);
+  font-size: 14px;
+}
+
+.searchbar {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.searchbar input {
+  padding-left: 40px;
+}
+
+.searchbar .ic {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--sub);
+  font-size: 15px;
+}
+
+.progresscard {
+  display: flex;
+  gap: 26px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.progresscard .pstat {
+  flex: 1;
+  min-width: 150px;
+}
+
+.pbig {
+  font-family: var(--head);
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.pbar {
+  height: 10px;
+  border-radius: 2px;
+  background: transparent;
+  border: 1.5px solid var(--ink);
+  margin-top: 8px;
+  overflow: hidden;
+}
+
+.pbar > div {
+  height: 100%;
+  background: var(--orange);
+  border-right: 1.5px solid var(--ink);
+  transition: width 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.pbar > div[style*="width:0%"] {
+  border-right: none;
+}
+
+.achv {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 4px 2px 8px;
+  margin-bottom: 12px;
+}
+
+.abadge {
+  flex: 0 0 auto;
+  text-align: center;
+  padding: 12px 14px;
+  border-radius: 50%;
+  width: 92px;
+  height: 92px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px dashed var(--sub2);
+  background: transparent;
+  opacity: 0.55;
+  filter: grayscale(1);
+}
+
+.abadge.on {
+  opacity: 1;
+  filter: none;
+  border: 2px solid var(--ink);
+  background: var(--orangeSoft);
+  transform: rotate(-5deg);
+}
+
+.abadge:nth-child(even).on {
+  transform: rotate(4deg);
+}
+
+.abadge .aic {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.abadge .al {
+  font-size: 11.5px;
+  color: var(--text);
+  font-weight: 700;
+  margin-top: 4px;
+  line-height: 1.15;
+}
+
+.timerwrap {
+  margin-bottom: 16px;
+  position: sticky;
+  top: calc(64px + env(safe-area-inset-top, 0px));
+  z-index: 30;
+  background: var(--card);
+}
+
+.timer {
+  font-size: 44px;
+  font-weight: 800;
+  text-align: center;
+  padding: 10px 0 4px;
+  font-family: var(--head);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.01em;
+}
+
+.timer.low {
+  color: var(--danger);
+  animation: tick 1s steps(2, jump-none) infinite;
+}
+
+@keyframes tick {
+  50% { opacity: 0.55; }
+}
+
+.tbar {
+  height: 10px;
+  border-radius: 2px;
+  border: 1.5px solid var(--ink);
+  margin-top: 8px;
+  overflow: hidden;
+}
+
+.tbar > div {
+  height: 100%;
+  background: var(--ink);
+  transition: width 1s linear;
+}
+
+.tbar.low > div {
+  background: var(--danger);
+}
+
+.qbox {
+  border-top: 1.5px dashed var(--border);
+  padding: 22px 0;
+}
+
+.qbox:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.qbox p {
+  max-width: 68ch;
+}
+
+.qnum {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 28px;
+  padding: 0 6px;
+  border-radius: 50%;
+  border: 1.5px solid var(--ink);
+  font-family: var(--head);
+  font-weight: 800;
+  font-size: 14px;
+  margin-right: 8px;
+}
+
+.opt {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 14px;
+  border-radius: 6px;
+  margin: 8px 0;
+  border: 1.5px solid var(--border);
+  cursor: pointer;
+  font-weight: 500;
+  text-transform: none;
+  font-size: 16px;
+  color: var(--text);
+  transition: border-color 0.12s, background 0.12s;
+}
+
+.opt:hover {
+  border-color: var(--ink);
+}
+
+.opt input {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--ink);
+  flex-shrink: 0;
+  margin: 0;
+}
+
+.opt:has(input:checked) {
+  border-color: var(--ink);
+  background: var(--orangeSoft);
+  box-shadow: inset 4px 0 0 var(--ink);
+}
+
+:root[data-theme="dark"] .opt:has(input:checked) {
+  color: #fff6b8;
+}
+
+.err {
+  color: var(--danger);
+  font-size: 14px;
+  margin-top: 12px;
+  font-weight: 600;
+  background: var(--dangerSoft);
+  padding: 10px 12px;
+  border-radius: 6px;
+  border-left: 4px solid var(--danger);
+}
+
+.rowflex {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.rowflex > * {
+  flex: 1;
+  min-width: 130px;
+}
+
+a.link {
+  color: var(--text);
+  cursor: pointer;
+  font-size: 14.5px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
+}
+
+a.link:hover {
+  background: var(--orangeSoft);
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 0;
+  border-top: 1.5px dashed var(--border);
+  flex-wrap: wrap;
+}
+
+.item:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.item button {
+  margin-top: 0;
+}
+
+.itemtitle {
+  font-weight: 700;
+  font-size: 17px;
+  font-family: var(--head);
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  border: 1.5px solid var(--ink);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 13px;
+  margin-right: 11px;
+  flex-shrink: 0;
+}
+
+:root[data-theme="dark"] .avatar {
+  color: #12171c;
+}
+
+.itemrow {
+  display: flex;
+  align-items: center;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 420px) {
+  .stats {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.stat {
+  padding: 16px 14px;
+  text-align: left;
+  margin-bottom: 0;
+}
+
+.stat .n {
+  font-family: var(--head);
+  font-size: 38px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.stat .l {
+  font-size: 14px;
+  color: var(--sub);
+  font-weight: 600;
+  margin-top: 6px;
+}
+
+.empty {
+  text-align: center;
+  padding: 34px 10px;
+  color: var(--sub);
+  border-style: dashed;
+  border-color: var(--sub2);
+}
+
+.empty .ic {
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+
+.gscore {
+  font-weight: 800;
+  font-family: var(--head);
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 20, 26, 0.6);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadein 0.15s ease;
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal {
+  max-width: 380px;
+  width: 100%;
+  padding: 26px;
+  text-align: left;
+  animation: pop 0.18s cubic-bezier(0.2, 1.2, 0.4, 1);
+}
+
+@keyframes pop {
+  from { transform: scale(0.94); }
+  to { transform: scale(1); }
+}
+
+.modal .mic {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.modal button {
+  margin-right: 0;
+}
+
+.lockbox {
+  width: 100%;
+  background: var(--bg);
+  border: 1.5px dashed var(--sub2);
+  border-radius: 8px;
+  padding: 14px;
+  margin-top: 10px;
+}
+
+.wrap {
+  animation: fadein 0.2s ease;
+}
+
+@media (hover: none) {
+  button:hover {
+    transform: none;
+    box-shadow: 0 3px 0 var(--sub2);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+</style>
+
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+</head>
+<body>
+
+<div class="navbar" id="navbar"></div>
+<div class="wrap" id="app"></div>
+
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyA2wqin7hWuBc91RcNqTWl_BKShDqUxPSE",
+  authDomain: "online-quiz-a7f40.firebaseapp.com",
+  projectId: "online-quiz-a7f40",
+  storageBucket: "online-quiz-a7f40.firebasestorage.app",
+  messagingSenderId: "410078796989",
+  appId: "1:410078796989:web:a8ad955ceef10ef348ebd4"
+};
+
+let db = null;
+let dbReady = false;
+
+const GRADES = [
+  'Grade 1', 'Grade 2', 'Grade 3', 'Grade 4',
+  'Grade 5', 'Grade 6', 'Grade 7', 'Grade 8',
+  'Grade 9', 'Grade 10', 'Grade 11', 'Grade 12'
+];
+
+let state = {
+  screen: 'home',
+  err: '',
+  studentMode: 'login',
+  studentName: '',
+  studentGrade: GRADES[0],
+  studentSlug: '',
+  exams: [],
+  submissions: [],
+  activeExam: null,
+  currentAnswers: null,
+  draftQuestions: [],
+  newQ: { type: 'mcq', text: '', options: '', points: 10 },
+  examDraft: { title: '', grade: '', duration: 120, isPrivate: false, password: '' },
+  timerLeft: 0,
+  timerInt: null,
+  gradingSub: null,
+  gradingScores: {},
+  gradingCorrect: {},
+  studentSearch: '',
+  adminSearch: '',
+  deleteTarget: null,
+  examErr: {},
+  unlockedExams: {},
+  theme: 'light'
+};
+
+try {
+  const session = JSON.parse(localStorage.getItem('exam_student_session') || 'null');
+  if (session) {
+    state.studentName = session.name;
+    state.studentGrade = session.grade;
+    state.studentSlug = session.slug;
+  }
+} catch (e) {
+  // Session restore fallback
+}
+
+try {
+  const savedTheme = localStorage.getItem('exam_theme');
+  if (savedTheme) {
+    state.theme = savedTheme;
+  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    state.theme = 'dark';
+  }
+} catch (e) {
+  // Theme load fallback
+}
+
+document.documentElement.setAttribute('data-theme', state.theme);
+
+function esc(str) {
+  if (str == null) return '';
+  return String(str).replace(/[&<>"']/g, function(char) {
+    switch (char) {
+      case '&': return '&amp;';
+      case '<': return '&lt;';
+      case '>': return '&gt;';
+      case '"': return '&quot;';
+      case "'": return '&#39;';
+      default: return char;
+    }
+  });
+}
+
+function slugify(name) {
+  return name
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '_')
+    .replace(/^_+|_+$/g, '');
+}
+
+function gradeOptions(selectedGrade) {
+  return GRADES.map(function(grade) {
+    const isSelected = grade === selectedGrade ? 'selected' : '';
+    return `<option value="${grade}" ${isSelected}>${grade}</option>`;
+  }).join('');
+}
+
+function initials(name) {
+  const cleanName = (name || '?').trim();
+  const words = cleanName.split(/\s+/);
+  return words
+    .map(word => word[0])
+    .slice(0, 2)
+    .join('')
+    .toUpperCase();
+}
+
+function toggleTheme() {
+  state.theme = state.theme === 'dark' ? 'light' : 'dark';
+  try {
+    localStorage.setItem('exam_theme', state.theme);
+  } catch (e) {}
+  document.documentElement.setAttribute('data-theme', state.theme);
+  render();
+}
+
+function renderNavbar() {
+  const isAdminArea = ['adminLogin', 'adminDash', 'postExam', 'gradeSubmission'].includes(state.screen);
+  const isStudentArea = ['studentDash', 'examTaking', 'submitted'].includes(state.screen) && state.studentName;
+  
+  let rightControls = `<button class="themebtn" title="Toggle theme" onclick="toggleTheme()">${state.theme === 'dark' ? '☀️' : '🌙'}</button>`;
+  
+  if (isStudentArea) {
+    rightControls += `
+      <div class="navavatar">
+        <span class="avatar" style="margin:0">${initials(state.studentName)}</span>
+        <div>
+          <div class="nm">${esc(state.studentName)}</div>
+          <span class="small">${esc(state.studentGrade)}</span>
+        </div>
+      </div>
+      <a class="link" onclick="studentLogout()">Log out</a>
+    `;
+  } else if (isAdminArea) {
+    rightControls += `
+      <span class="pill sub">Admin</span>
+      <a class="link" onclick="go('home')">Log out</a>
+    `;
+  } else {
+    rightControls += `
+      <button class="secondary" style="margin:0;padding:9px 16px;font-size:13px" onclick="go('adminLogin')">⚙️ Admin</button>
+    `;
+  }
+
+  return `
+    <div class="navbrand">
+      <span class="ic">📚</span>
+      <span>Teacher Exams</span>
+    </div>
+    <div class="navright">${rightControls}</div>
+  `;
+}
+
+function render() {
+  document.getElementById('navbar').innerHTML = renderNavbar();
+  let contentHtml = views[state.screen]();
+  
+  if (state.deleteTarget) {
+    contentHtml += `
+      <div class="overlay">
+        <div class="modal card">
+          <div class="mic">🗑️</div>
+          <h3>Delete this exam?</h3>
+          <p class="small">This can't be undone. Students will no longer see it.</p>
+          <button class="danger big" onclick="confirmDeleteExam()">Delete Exam</button>
+          <button class="ghost big" onclick="state.deleteTarget=null;render();">Cancel</button>
+        </div>
+      </div>
+    `;
+  }
+  
+  document.getElementById('app').innerHTML = contentHtml;
+}
+
+function go(screenName) {
+  state.screen = screenName;
+  state.err = '';
+  render();
+}
+
+function initDb() {
+  try {
+    if (firebaseConfig.apiKey === 'YOUR_API_KEY') {
+      state.err = 'Firebase is not configured yet — open the file and paste your project config near the top of the script.';
+      render();
+      return;
+    }
+    
+    firebase.initializeApp(firebaseConfig);
+    db = firebase.firestore();
+    dbReady = true;
+
+    db.collection('exams').onSnapshot(
+      snap => {
+        state.exams = snap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        render();
+      },
+      err => {
+        state.err = 'Sync error: ' + (err.code || err.message);
+        render();
+      }
+    );
+
+    db.collection('submissions').onSnapshot(
+      snap => {
+        state.submissions = snap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        render();
+      },
+      err => {
+        state.err = 'Sync error: ' + (err.code || err.message);
+        render();
+      }
+    );
+  } catch (e) {
+    state.err = 'Could not connect to Firebase: ' + (e.message || e);
+    render();
+  }
+}
+
+function fmtTime(ms) {
+  if (ms < 0) ms = 0;
+  const totalSeconds = Math.floor(ms / 1000);
+  const hours = String(Math.floor(totalSeconds / 3600)).padStart(2, '0');
+  const minutes = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, '0');
+  const seconds = String(totalSeconds % 60).padStart(2, '0');
+  return hours + ':' + minutes + ':' + seconds;
+}
+
+function draftKey(examId, slug) {
+  return 'exam_draft_' + examId + '_' + slug;
+}
+
+function loadDraft(examId, slug) {
+  try {
+    return JSON.parse(localStorage.getItem(draftKey(examId, slug)) || 'null');
+  } catch (e) {
+    return null;
+  }
+}
+
+function saveDraft(examId, slug, data) {
+  try {
+    localStorage.setItem(draftKey(examId, slug), JSON.stringify(data));
+  } catch (e) {}
+}
+
+function clearDraft(examId, slug) {
+  try {
+    localStorage.removeItem(draftKey(examId, slug));
+  } catch (e) {}
+}
+
+function studentSubStatus(exam) {
+  return state.submissions.find(s => s.examId === exam.id && s.studentSlug === state.studentSlug) || null;
+}
+
+function unlockedKey() {
+  return 'exam_unlocked_' + state.studentSlug;
+}
+
+function isUnlocked(examId) {
+  if (state.unlockedExams[examId]) return true;
+  try {
+    const list = JSON.parse(localStorage.getItem(unlockedKey()) || '[]');
+    return list.includes(examId);
+  } catch (e) {
+    return false;
+  }
+}
+
+function markUnlocked(examId) {
+  state.unlockedExams[examId] = true;
+  try {
+    const list = JSON.parse(localStorage.getItem(unlockedKey()) || '[]');
+    if (!list.includes(examId)) {
+      list.push(examId);
+      localStorage.setItem(unlockedKey(), JSON.stringify(list));
+    }
+  } catch (e) {}
+}
+
+function unlockExam(examId) {
+  const exam = state.exams.find(e => e.id === examId);
+  const inputEl = document.getElementById('pw_' + examId);
+  const enteredPassword = inputEl ? inputEl.value : '';
+
+  if (exam && enteredPassword === exam.password) {
+    markUnlocked(examId);
+    state.examErr[examId] = '';
+  } else {
+    state.examErr[examId] = 'Incorrect password.';
+  }
+  render();
+}
+
+function computeAchievements() {
+  const studentSubs = state.submissions.filter(s => s.studentSlug === state.studentSlug);
+  const gradedSubs = studentSubs.filter(s => s.status === 'graded');
+  const hasPerfectScore = gradedSubs.some(s => s.maxScore > 0 && s.totalScore === s.maxScore);
+  
+  const averageScore = gradedSubs.length
+    ? gradedSubs.reduce((acc, s) => acc + (s.totalScore / (s.maxScore || 1)), 0) / gradedSubs.length * 100
+    : 0;
+
+  return [
+    { icon: '🚀', label: 'First Exam', unlocked: studentSubs.length >= 1 },
+    { icon: '🔥', label: '3 Exams', unlocked: studentSubs.length >= 3 },
+    { icon: '🏆', label: 'Perfect Score', unlocked: hasPerfectScore },
+    { icon: '⭐', label: 'High Achiever', unlocked: averageScore >= 90 && gradedSubs.length > 0 }
+  ];
+}
+
+const views = {
+  home() {
+    return `
+      <div class="hero card">
+        <span class="badge">✨ Premium Exam Platform</span>
+        <h1>Teacher Exams</h1>
+        <p>Sign up, take beautifully timed exams, track your progress, and unlock achievements — all in one place.</p>
+        <button class="big" onclick="go('studentLogin')">Continue as Student →</button>
+        <div class="chips">
+          <span class="chip">⏱ Timed Exams</span>
+          <span class="chip">🔒 Private Exams</span>
+          <span class="chip">🏆 Achievements</span>
+        </div>
+        ${!dbReady ? '<p class="small" style="margin-top:16px">Connecting…</p>' : ''}
+        ${state.err ? `<p class="err">${state.err}</p>` : ''}
+      </div>
+    `;
+  },
+
+  studentLogin() {
+    const mode = state.studentMode;
+    return `
+      <div class="topbar">
+        <h1>${mode === 'signup' ? 'Create Account' : 'Welcome Back'}</h1>
+        <a class="link" onclick="go('home')">← Back</a>
+      </div>
+      <div class="card">
+        <div class="tabs">
+          <button class="${mode === 'login' ? 'active' : ''}" onclick="state.studentMode='login';state.err='';render();">Log In</button>
+          <button class="${mode === 'signup' ? 'active' : ''}" onclick="state.studentMode='signup';state.err='';render();">Sign Up</button>
+        </div>
+        <label>Full name</label>
+        <input type="text" id="sName" value="${esc(state.studentName)}" placeholder="e.g. Sara Ahmed">
+        <label>Password</label>
+        <input type="password" id="sPass" placeholder="Choose a password">
+        ${mode === 'signup' ? `<label>Grade</label><select id="sGrade">${gradeOptions(state.studentGrade)}</select>` : ''}
+        ${state.err ? `<p class="err">${state.err}</p>` : ''}
+        <button class="big" onclick="${mode === 'signup' ? 'studentSignupSubmit()' : 'studentLoginSubmit()'}">
+          ${mode === 'signup' ? 'Create Account' : 'Log In'}
+        </button>
+      </div>
+    `;
+  },
+
+  studentDash() {
+    const studentGradeExams = state.exams.filter(e => e.grade === state.studentGrade);
+    const searchQuery = state.studentSearch.trim().toLowerCase();
+    
+    const matchedExams = searchQuery
+      ? studentGradeExams.filter(e => e.title.toLowerCase().includes(searchQuery))
+      : studentGradeExams;
+
+    const studentSubmissions = state.submissions.filter(s => s.studentSlug === state.studentSlug);
+    const completedCount = studentGradeExams.filter(e => studentSubmissions.some(s => s.examId === e.id)).length;
+    
+    const gradedSubmissions = studentSubmissions.filter(s => s.status === 'graded');
+    const avgScore = gradedSubmissions.length
+      ? Math.round(gradedSubmissions.reduce((acc, s) => acc + (s.totalScore / (s.maxScore || 1)), 0) / gradedSubmissions.length * 100)
+      : null;
+
+    const achievements = computeAchievements();
+    const recommendedExam = studentGradeExams.find(e => 
+      !studentSubStatus(e) && 
+      !loadDraft(e.id, state.studentSlug) && 
+      !(e.isPrivate && !isUnlocked(e.id))
+    );
+
+    return `
+      <h1 style="margin-bottom:18px">Welcome back, ${esc(state.studentName)} 👋</h1>
+      ${recommendedExam ? `
+        <div class="card banner">
+          <div class="bic">🎯</div>
+          <div class="btext">
+            <b>Next Up</b>
+            <div>${esc(recommendedExam.title)}</div>
+          </div>
+          <button onclick="startExam('${recommendedExam.id}')">Start</button>
+        </div>
+      ` : ''}
+
+      <div class="card progresscard">
+        <div class="pstat">
+          <span class="small">Exams Completed</span>
+          <div class="pbig">${completedCount}/${studentGradeExams.length}</div>
+          <div class="pbar"><div style="width:${studentGradeExams.length ? (completedCount / studentGradeExams.length) * 100 : 0}%"></div></div>
+        </div>
+        <div class="pstat">
+          <span class="small">Average Score</span>
+          <div class="pbig">${avgScore === null ? '—' : avgScore + '%'}</div>
+          <div class="pbar"><div style="width:${avgScore || 0}%"></div></div>
+        </div>
+      </div>
+
+      <div class="achv">
+        ${achievements.map(ach => `
+          <div class="abadge ${ach.unlocked ? 'on' : ''}">
+            <div class="aic">${ach.icon}</div>
+            <span class="al">${ach.label}</span>
+          </div>
+        `).join('')}
+      </div>
+
+      <div class="searchbar">
+        <span class="ic">🔍</span>
+        <input type="text" placeholder="Search exams..." value="${esc(state.studentSearch)}" oninput="state.studentSearch=this.value;render();">
+      </div>
+
+      ${matchedExams.length === 0 ? `
+        <div class="card empty">
+          <div class="ic">🗒️</div>
+          ${studentGradeExams.length === 0 ? 'No exams available for your grade yet.' : 'No exams match your search.'}
+        </div>
+      ` : matchedExams.map((exam, idx) => {
+        const sub = studentSubStatus(exam);
+        const draft = !sub ? loadDraft(exam.id, state.studentSlug) : null;
+        const locked = exam.isPrivate && !sub && !draft && !isUnlocked(exam.id);
+        
+        let statusTag = '';
+        let actionArea = '';
+
+        if (locked) {
+          statusTag = `<span class="pill warn">🔒 Private</span>`;
+          actionArea = `
+            <div class="lockbox">
+              <input type="password" id="pw_${exam.id}" placeholder="Enter exam password">
+              ${state.examErr[exam.id] ? `<p class="err" style="margin-top:8px">${esc(state.examErr[exam.id])}</p>` : ''}
+              <button onclick="unlockExam('${exam.id}')">🔓 Unlock Exam</button>
+            </div>
+          `;
+        } else if (sub && sub.status === 'graded') {
+          statusTag = `<span class="pill ok">✓ Graded — ${sub.totalScore}/${sub.maxScore}</span>`;
+          actionArea = '';
+        } else if (sub) {
+          statusTag = `<span class="pill sub">⏳ Awaiting grade</span>`;
+          actionArea = '';
+        } else if (draft) {
+          statusTag = `<span class="pill warn">◐ In progress</span>`;
+          actionArea = `<button onclick="resumeExam('${exam.id}')">Resume</button>`;
+        } else {
+          statusTag = `<span class="small">${exam.durationMinutes || 120} min · ${exam.questions.length} question(s)</span>`;
+          actionArea = `<button onclick="startExam('${exam.id}')">Start Exam</button>`;
+        }
+
+        return `
+          <div class="card stg" style="animation-delay:${idx * 0.05}s">
+            <div class="item">
+              <div>
+                <div class="itemtitle">${exam.isPrivate ? '🔒 ' : ''}${esc(exam.title)}</div>
+                ${statusTag}
+              </div>
+              ${locked ? '' : actionArea}
+            </div>
+            ${locked ? actionArea : ''}
+            ${sub && sub.status === 'graded' && sub.feedback ? `<p class="small" style="margin:8px 0 0">💬 ${esc(sub.feedback)}</p>` : ''}
+          </div>
+        `;
+      }).join('')}
+    `;
+  },
+
+  examTaking() {
+    const exam = state.activeExam;
+    if (!exam) {
+      return `<div class="card">No active exam. <a class="link" onclick="go('studentDash')">Go back</a></div>`;
+    }
+
+    const isTimeLow = state.timerLeft < 5 * 60 * 1000;
+    const timePercent = Math.max(0, Math.min(100, (state.timerLeft / ((exam.durationMinutes || 120) * 60000)) * 100));
+
+    return `
+      <div class="topbar">
+        <h1>${esc(exam.title)}</h1>
+      </div>
+      <div class="timerwrap card">
+        <div class="timer ${isTimeLow ? 'low' : ''}">⏱ ${fmtTime(state.timerLeft)}</div>
+        <div class="tbar ${isTimeLow ? 'low' : ''}"><div style="width:${timePercent}%"></div></div>
+      </div>
+      <div class="card">
+        ${exam.questions.map((q, idx) => `
+          <div class="qbox">
+            <p><span class="qnum">${idx + 1}</span><b>${q.points || 10} pts</b> — ${esc(q.text)}</p>
+            ${q.type === 'mcq'
+              ? q.options.map((opt, optIdx) => `
+                <label class="opt">
+                  <input type="radio" name="q_${q.id}" value="${optIdx}" ${state.currentAnswers && state.currentAnswers[q.id] == optIdx ? 'checked' : ''} onchange="answerChanged('${q.id}', this.value)">
+                  <span>${esc(opt)}</span>
+                </label>
+              `).join('')
+              : `<textarea onchange="answerChanged('${q.id}', this.value)" placeholder="Write your answer...">${esc((state.currentAnswers && state.currentAnswers[q.id]) || '')}</textarea>`
+            }
+          </div>
+        `).join('')}
+        <button onclick="submitExam()">Submit Exam</button>
+        <button class="ghost" onclick="saveAndExit()">Save & Exit</button>
+      </div>
+    `;
+  },
+
+  submitted() {
+    return `
+      <div class="card hero">
+        <div style="font-size:46px">✅</div>
+        <h2>Exam submitted!</h2>
+        <p>Your exam has been sent to your teacher for grading. Check back later for your grade.</p>
+        <button onclick="go('studentDash')">Back to My Exams</button>
+      </div>
+    `;
+  },
+
+  adminLogin() {
+    return `
+      <div class="topbar">
+        <h1>Admin Login</h1>
+        <a class="link" onclick="go('home')">← Back</a>
+      </div>
+      <div class="card">
+        <label>Username</label>
+        <input type="text" id="aUser" placeholder="Username">
+        <label>Password</label>
+        <input type="password" id="aPass" placeholder="Password">
+        ${state.err ? `<p class="err">${state.err}</p>` : ''}
+        <button class="big" onclick="adminLoginSubmit()">Log In</button>
+      </div>
+    `;
+  },
+
+  adminDash() {
+    const pendingSubmissions = state.submissions.filter(s => s.status === 'submitted');
+    const gradedSubmissions = state.submissions.filter(s => s.status === 'graded');
+    
+    const query = state.adminSearch.trim().toLowerCase();
+    const filteredExams = query 
+      ? state.exams.filter(e => e.title.toLowerCase().includes(query)) 
+      : state.exams;
+
+    return `
+      <h1 style="margin-bottom:18px">Admin Dashboard</h1>
+      <div class="stats">
+        <div class="stat card">
+          <div class="n">${state.exams.length}</div>
+          <div class="l">Exams</div>
+        </div>
+        <div class="stat card">
+          <div class="n">${pendingSubmissions.length}</div>
+          <div class="l">To Grade</div>
+        </div>
+        <div class="stat card">
+          <div class="n">${gradedSubmissions.length}</div>
+          <div class="l">Graded</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <button class="big orange" onclick="startPostExam()">+ Post New Exam</button>
+      </div>
+
+      <div class="card">
+        <h3 style="margin-bottom:12px">Posted Exams</h3>
+        <div class="searchbar">
+          <span class="ic">🔍</span>
+          <input type="text" placeholder="Search exams..." value="${esc(state.adminSearch)}" oninput="state.adminSearch=this.value;render();">
+        </div>
+        ${filteredExams.length === 0 ? '<p class="small">No exams found.</p>' : filteredExams.map(e => `
+          <div class="item">
+            <div>
+              <div class="itemtitle">${e.isPrivate ? '🔒 ' : ''}${esc(e.title)}</div>
+              <span class="small">${esc(e.grade)} · ${e.durationMinutes || 120} min · ${e.questions.length} question(s)</span>
+            </div>
+            <button class="danger" onclick="deleteExam('${e.id}')">Delete</button>
+          </div>
+        `).join('')}
+      </div>
+
+      <div class="card">
+        <h3 style="margin-bottom:12px">Ungraded Submissions</h3>
+        ${pendingSubmissions.length === 0 ? '<p class="small">Nothing to grade. 🎉</p>' : pendingSubmissions.map(sub => `
+          <div class="item">
+            <div class="itemrow">
+              <span class="avatar">${initials(sub.studentName)}</span>
+              <div>
+                <div class="itemtitle">${esc(sub.studentName)}</div>
+                <span class="small">${esc(sub.examTitle)}</span>
+              </div>
+            </div>
+            <button onclick="openGrade('${sub.id}')">Grade</button>
+          </div>
+        `).join('')}
+      </div>
+
+      <div class="card">
+        <h3 style="margin-bottom:12px">Graded Submissions</h3>
+        ${gradedSubmissions.length === 0 ? '<p class="small">None yet.</p>' : gradedSubmissions.map(sub => `
+          <div class="item">
+            <div class="itemrow">
+              <span class="avatar">${initials(sub.studentName)}</span>
+              <div>
+                <div class="itemtitle">${esc(sub.studentName)}</div>
+                <span class="small">${esc(sub.examTitle)} — <b class="gscore">${sub.totalScore}/${sub.maxScore}</b></span>
+              </div>
+            </div>
+            <button class="ghost" onclick="openGrade('${sub.id}')">Review</button>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  },
+
+  postExam() {
+    const question = state.newQ;
+    return `
+      <div class="topbar">
+        <h1>Post New Exam</h1>
+        <a class="link" onclick="go('adminDash')">← Back</a>
+      </div>
+
+      <div class="card">
+        <label>Exam title</label>
+        <input type="text" id="exTitle" value="${esc(state.examDraft.title)}" oninput="state.examDraft.title=this.value" placeholder="e.g. Midterm English">
+        
+        <div class="rowflex">
+          <div>
+            <label>Grade</label>
+            <select id="exGrade" onchange="state.examDraft.grade=this.value">
+              ${gradeOptions(state.examDraft.grade || GRADES[0])}
+            </select>
+          </div>
+          <div>
+            <label>Duration (min)</label>
+            <input type="number" id="exDuration" value="${state.examDraft.duration}" oninput="state.examDraft.duration=this.value">
+          </div>
+        </div>
+
+        <label style="display:flex;align-items:center;gap:8px;cursor:pointer;margin-top:16px">
+          <input type="checkbox" id="exPrivate" ${state.examDraft.isPrivate ? 'checked' : ''} onchange="state.examDraft.isPrivate=this.checked;render();" style="width:auto">
+          <span style="text-transform:none;font-weight:600;color:var(--text);font-size:14px">🔒 Make this exam private (requires a password)</span>
+        </label>
+
+        ${state.examDraft.isPrivate ? `
+          <label>Exam password</label>
+          <input type="text" id="exPassword" value="${esc(state.examDraft.password)}" oninput="state.examDraft.password=this.value" placeholder="Password students must enter">
+        ` : ''}
+      </div>
+
+      <div class="card">
+        <h3 style="margin-bottom:12px">Add Question</h3>
+        <label>Type</label>
+        <select id="qType" onchange="state.newQ.type=this.value;render();">
+          <option value="mcq" ${question.type === 'mcq' ? 'selected' : ''}>Multiple Choice</option>
+          <option value="essay" ${question.type === 'essay' ? 'selected' : ''}>Essay</option>
+        </select>
+
+        <label>Question text</label>
+        <textarea id="qText" placeholder="Question...">${esc(question.text)}</textarea>
+
+        ${question.type === 'mcq' ? `
+          <label>Options (one per line)</label>
+          <textarea id="qOptions" placeholder="Option A&#10;Option B&#10;Option C">${esc(question.options)}</textarea>
+        ` : ''}
+
+        <label>Points</label>
+        <input type="number" id="qPoints" value="${question.points}">
+        
+        <button onclick="addQuestion()">+ Add Question</button>
+      </div>
+
+      <div class="card">
+        <h3 style="margin-bottom:12px">Questions in this exam (${state.draftQuestions.length})</h3>
+        ${state.draftQuestions.length === 0 ? '<p class="small">No questions added yet.</p>' : state.draftQuestions.map((q, idx) => `
+          <div class="item">
+            <div>
+              <span class="qnum">${idx + 1}</span>
+              <span class="small">(${q.type}, ${q.points}pts)</span>
+              <div class="small" style="margin-top:4px">${esc(q.text)}</div>
+            </div>
+            <button class="danger" onclick="removeQuestion(${idx})">Remove</button>
+          </div>
+        `).join('')}
+      </div>
+
+      ${state.err ? `<p class="err">${state.err}</p>` : ''}
+      <button class="big" onclick="publishExam()">Publish Exam</button>
+    `;
+  },
+
+  gradeSubmission() {
+    const submission = state.submissions.find(s => s.id === state.gradingSub);
+    if (!submission) {
+      return `<div class="card">Submission not found. <a class="link" onclick="go('adminDash')">Back</a></div>`;
+    }
+
+    const exam = state.exams.find(e => e.id === submission.examId);
+    const questions = exam ? exam.questions : [];
+
+    const runningScore = questions.reduce((acc, q) => {
+      const isCorrect = state.gradingCorrect[q.id];
+      return acc + (isCorrect === true ? (q.points || 10) : 0);
+    }, 0);
+
+    const maxScore = questions.reduce((acc, q) => acc + (q.points || 10), 0);
+
+    return `
+      <div class="topbar">
+        <div class="itemrow">
+          <span class="avatar">${initials(submission.studentName)}</span>
+          <div>
+            <h1>${esc(submission.studentName)}</h1>
+            <span class="small">${esc(submission.examTitle)}</span>
+          </div>
+        </div>
+        <a class="link" onclick="go('adminDash')">← Back</a>
+      </div>
+
+      <div class="card" style="text-align:center">
+        <span class="small">Live total</span>
+        <div class="gscore" style="font-size:30px">${runningScore} / ${maxScore}</div>
+      </div>
+
+      <div class="card">
+        ${questions.map((q, idx) => {
+          const answerValue = submission.answers[q.id];
+          let formattedAnswer = '';
+
+          if (q.type === 'mcq') {
+            formattedAnswer = q.options[answerValue] !== undefined ? esc(q.options[answerValue]) : '<i>No answer</i>';
+          } else {
+            formattedAnswer = answerValue ? esc(answerValue) : '<i>No answer</i>';
+          }
+
+          const markStatus = state.gradingCorrect[q.id];
+
+          return `
+            <div class="qbox">
+              <p><span class="qnum">${idx + 1}</span><b>${q.points || 10} pts</b> — ${esc(q.text)}</p>
+              <p class="small" style="background:var(--bg);padding:11px 13px;border-radius:12px">${formattedAnswer}</p>
+              <div class="rowflex">
+                <button class="toggle ${markStatus === true ? 'on-ok' : ''}" onclick="setCorrect('${q.id}', ${q.points || 10}, true)">✓ Correct (${q.points || 10} pts)</button>
+                <button class="toggle ${markStatus === false ? 'on-bad' : ''}" onclick="setCorrect('${q.id}', ${q.points || 10}, false)">✗ Incorrect (0 pts)</button>
+              </div>
+            </div>
+          `;
+        }).join('')}
+
+        <label>Feedback (optional)</label>
+        <textarea id="fbText" placeholder="Feedback to student...">${esc(submission.feedback || '')}</textarea>
+        ${state.err ? `<p class="err">${state.err}</p>` : ''}
+        <button class="big" onclick="saveGrade()">Save Grade</button>
+      </div>
+    `;
+  }
+};
+
+function setCorrect(questionId, points, isCorrect) {
+  state.gradingCorrect[questionId] = isCorrect;
+  state.gradingScores[questionId] = isCorrect ? points : 0;
+  render();
+}
+
+async function studentSignupSubmit() {
+  const nameInput = document.getElementById('sName').value.trim();
+  const passwordInput = document.getElementById('sPass').value;
+  const gradeInput = document.getElementById('sGrade').value;
+
+  if (!nameInput || !passwordInput) {
+    state.err = 'Please enter your name and a password.';
+    render();
+    return;
+  }
+
+  const slug = slugify(nameInput);
+  if (!slug) {
+    state.err = 'Please enter a valid name.';
+    render();
+    return;
+  }
+
+  if (!db) {
+    state.err = 'Still connecting — please wait a moment and try again.';
+    render();
+    return;
+  }
+
+  try {
+    const studentRef = db.doc('students/' + slug);
+    const snap = await studentRef.get();
+
+    if (snap.exists) {
+      state.err = 'That name is already registered. Try logging in instead.';
+      render();
+      return;
+    }
+
+    await studentRef.set({
+      name: nameInput,
+      password: passwordInput,
+      grade: gradeInput,
+      createdAt: Date.now()
+    });
+
+    state.studentName = nameInput;
+    state.studentGrade = gradeInput;
+    state.studentSlug = slug;
+
+    try {
+      localStorage.setItem('exam_student_session', JSON.stringify({ name: nameInput, grade: gradeInput, slug: slug }));
+    } catch (e) {}
+
+    go('studentDash');
+  } catch (e) {
+    const reason = (e && (e.code || e.message)) || 'unknown error';
+    state.err = 'Could not sign up: ' + reason;
+    render();
+  }
+}
+
+async function studentLoginSubmit() {
+  const nameInput = document.getElementById('sName').value.trim();
+  const passwordInput = document.getElementById('sPass').value;
+
+  if (!nameInput || !passwordInput) {
+    state.err = 'Please enter your name and password.';
+    render();
+    return;
+  }
+
+  const slug = slugify(nameInput);
+  if (!db) {
+    state.err = 'Still connecting — please wait a moment and try again.';
+    render();
+    return;
+  }
+
+  try {
+    const snap = await db.doc('students/' + slug).get();
+    if (!snap.exists) {
+      state.err = 'No account found. Please sign up first.';
+      render();
+      return;
+    }
+
+    const data = snap.data();
+    if (data.password !== passwordInput) {
+      state.err = 'Incorrect password.';
+      render();
+      return;
+    }
+
+    state.studentName = data.name;
+    state.studentGrade = data.grade;
+    state.studentSlug = slug;
+
+    try {
+      localStorage.setItem('exam_student_session', JSON.stringify({ name: data.name, grade: data.grade, slug: slug }));
+    } catch (e) {}
+
+    go('studentDash');
+  } catch (e) {
+    const reason = (e && (e.code || e.message)) || 'unknown error';
+    state.err = 'Could not log in: ' + reason;
+    render();
+  }
+}
+
+function studentLogout() {
+  state.studentName = '';
+  state.studentSlug = '';
+  try {
+    localStorage.removeItem('exam_student_session');
+  } catch (e) {}
+  go('home');
+}
+
+function adminLoginSubmit() {
+  const usernameInput = document.getElementById('aUser').value;
+  const passwordInput = document.getElementById('aPass').value;
+
+  if (usernameInput === 'MRUSER' && passwordInput === 'MRPASSWORD') {
+    go('adminDash');
+  } else {
+    state.err = 'Incorrect username or password.';
+    render();
+  }
+}
+
+function startPostExam() {
+  state.draftQuestions = [];
+  state.newQ = { type: 'mcq', text: '', options: '', points: 10 };
+  state.examDraft = { title: '', grade: GRADES[0], duration: 120, isPrivate: false, password: '' };
+  go('postExam');
+}
+
+function addQuestion() {
+  const textVal = document.getElementById('qText').value.trim();
+  const pointsVal = Number(document.getElementById('qPoints').value) || 10;
+  const typeVal = document.getElementById('qType').value;
+
+  if (!textVal) {
+    state.err = 'Question text required.';
+    render();
+    return;
+  }
+
+  const question = {
+    id: 'q' + Date.now() + Math.random().toString(36).slice(2, 7),
+    type: typeVal,
+    text: textVal,
+    points: pointsVal
+  };
+
+  if (typeVal === 'mcq') {
+    const optionsArr = document.getElementById('qOptions').value
+      .split('\n')
+      .map(str => str.trim())
+      .filter(Boolean);
+
+    if (optionsArr.length < 2) {
+      state.err = 'Add at least 2 options.';
+      render();
+      return;
+    }
+    question.options = optionsArr;
+  }
+
+  state.draftQuestions.push(question);
+  state.newQ = { type: 'mcq', text: '', options: '', points: 10 };
+  state.err = '';
+  render();
+}
+
+function removeQuestion(index) {
+  state.draftQuestions.splice(index, 1);
+  render();
+}
+
+async function publishExam() {
+  const title = (state.examDraft.title || '').trim();
+  const grade = state.examDraft.grade || GRADES[0];
+  const duration = Number(state.examDraft.duration) || 120;
+  const isPrivate = Boolean(state.examDraft.isPrivate);
+  const password = (state.examDraft.password || '').trim();
+
+  if (!title) {
+    state.err = 'Title is required.';
+    render();
+    return;
+  }
+
+  if (state.draftQuestions.length === 0) {
+    state.err = 'Add at least one question.';
+    render();
+    return;
+  }
+
+  if (isPrivate && !password) {
+    state.err = 'Set a password for this private exam.';
+    render();
+    return;
+  }
+
+  if (!db) {
+    state.err = 'Still connecting to storage — please wait a moment and try again.';
+    render();
+    return;
+  }
+
+  try {
+    await db.collection('exams').add({
+      title: title,
+      grade: grade,
+      durationMinutes: duration,
+      questions: state.draftQuestions,
+      isPrivate: isPrivate,
+      password: isPrivate ? password : '',
+      createdAt: Date.now()
+    });
+    go('adminDash');
+  } catch (e) {
+    const reason = (e && (e.code || e.message)) || 'unknown error';
+    state.err = 'Could not save exam: ' + reason;
+    render();
+  }
+}
+
+function deleteExam(id) {
+  state.deleteTarget = id;
+  render();
+}
+
+async function confirmDeleteExam() {
+  const targetId = state.deleteTarget;
+  state.deleteTarget = null;
+
+  try {
+    await db.collection('exams').doc(targetId).delete();
+  } catch (e) {
+    const reason = (e && (e.code || e.message)) || 'unknown error';
+    state.err = 'Could not delete exam: ' + reason;
+  }
+  render();
+}
+
+function startExam(examId) {
+  const exam = state.exams.find(e => e.id === examId);
+  const startedAt = Date.now();
+
+  saveDraft(examId, state.studentSlug, { answers: {}, startedAt: startedAt });
+  state.activeExam = exam;
+  state.currentAnswers = {};
+
+  beginTimer(exam, startedAt);
+  go('examTaking');
+}
+
+function resumeExam(examId) {
+  const exam = state.exams.find(e => e.id === examId);
+  const draft = loadDraft(examId, state.studentSlug);
+
+  state.activeExam = exam;
+  state.currentAnswers = (draft && draft.answers) || {};
+
+  beginTimer(exam, (draft && draft.startedAt) || Date.now());
+  go('examTaking');
+}
+
+function beginTimer(exam, startedAt) {
+  if (state.timerInt) {
+    clearInterval(state.timerInt);
+  }
+
+  const durationMs = (exam.durationMinutes || 120) * 60000;
+
+  function tick() {
+    state.timerLeft = startedAt + durationMs - Date.now();
+
+    if (state.timerLeft <= 0) {
+      clearInterval(state.timerInt);
+      submitExam(true);
+    } else if (state.screen === 'examTaking') {
+      const percentage = Math.max(0, Math.min(100, (state.timerLeft / durationMs) * 100));
+      const isLow = state.timerLeft < 5 * 60 * 1000;
+
+      document.querySelectorAll('.timer').forEach(el => {
+        el.textContent = '⏱ ' + fmtTime(state.timerLeft);
+        el.className = 'timer' + (isLow ? ' low' : '');
+      });
+
+      document.querySelectorAll('.tbar').forEach(el => {
+        el.className = 'tbar' + (isLow ? ' low' : '');
+        if (el.firstElementChild) {
+          el.firstElementChild.style.width = percentage + '%';
+        }
+      });
+    }
+  }
+
+  tick();
+  state.timerInt = setInterval(tick, 1000);
+}
+
+function answerChanged(questionId, value) {
+  if (!state.currentAnswers) {
+    state.currentAnswers = {};
+  }
+
+  state.currentAnswers[questionId] = value;
+  const elapsedTime = ((state.activeExam.durationMinutes || 120) * 60000) - state.timerLeft;
+
+  saveDraft(state.activeExam.id, state.studentSlug, {
+    answers: state.currentAnswers,
+    startedAt: Date.now() - elapsedTime
+  });
+}
+
+function saveAndExit() {
+  if (state.timerInt) {
+    clearInterval(state.timerInt);
+  }
+  go('studentDash');
+}
+
+async function submitExam(isAutoSubmit) {
+  if (state.timerInt) {
+    clearInterval(state.timerInt);
+  }
+
+  const exam = state.activeExam;
+  const maxScore = exam.questions.reduce((acc, q) => acc + (q.points || 10), 0);
+
+  try {
+    await db.collection('submissions').add({
+      examId: exam.id,
+      examTitle: exam.title,
+      studentSlug: state.studentSlug,
+      studentName: state.studentName,
+      studentGrade: state.studentGrade,
+      answers: state.currentAnswers || {},
+      submittedAt: Date.now(),
+      status: 'submitted',
+      perQuestion: {},
+      totalScore: null,
+      maxScore: maxScore,
+      feedback: '',
+      auto: Boolean(isAutoSubmit)
+    });
+
+    clearDraft(exam.id, state.studentSlug);
+    go('submitted');
+  } catch (e) {
+    const reason = (e && (e.code || e.message)) || 'unknown error';
+    state.err = 'Could not submit: ' + reason;
+    render();
+  }
+}
+
+function openGrade(submissionId) {
+  const submission = state.submissions.find(s => s.id === submissionId);
+  const exam = state.exams.find(e => e.id === submission.examId);
+
+  state.gradingSub = submissionId;
+  state.gradingScores = {};
+  state.gradingCorrect = {};
+
+  if (submission && submission.perQuestion && exam) {
+    exam.questions.forEach(q => {
+      const score = submission.perQuestion[q.id];
+      if (score !== undefined) {
+        state.gradingCorrect[q.id] = score >= (q.points || 10);
+        state.gradingScores[q.id] = score;
+      }
+    });
+  }
+
+  go('gradeSubmission');
+}
+
+async function saveGrade() {
+  const submission = state.submissions.find(s => s.id === state.gradingSub);
+  const exam = state.exams.find(e => e.id === submission.examId);
+
+  const perQuestion = { ...(submission.perQuestion || {}), ...state.gradingScores };
+  let totalScore = 0;
+
+  const questions = exam ? exam.questions : [];
+  questions.forEach(q => {
+    totalScore += Number(perQuestion[q.id]) || 0;
+  });
+
+  const feedbackText = document.getElementById('fbText').value;
+
+  try {
+    await db.collection('submissions').doc(submission.id).update({
+      perQuestion: perQuestion,
+      totalScore: totalScore,
+      status: 'graded',
+      feedback: feedbackText,
+      gradedAt: Date.now()
+    });
+
+    go('adminDash');
+  } catch (e) {
+    const reason = (e && (e.code || e.message)) || 'unknown error';
+    state.err = 'Could not save grade: ' + reason;
+    render();
+  }
+}
+
+render();
+initDb();
+</script>
+</body>
+</html>
